@@ -11,19 +11,19 @@ const Login = () => {
 
     const loginData = async () => {
         let getData = await fetch("http://localhost:5000/login", {
-            method: "post",
+            method: "POST",
             headers: {
-                "Content-Type": "Application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ email, password, })
         })
-        let add = await getData.json()
+        const add = await getData.json()
         console.warn(add)
         if (add.fname) {
             localStorage.setItem("Registered Data", JSON.stringify(add))
             navigate("/")
         } else {
-            alert("please enter currect email or password")
+            alert("please enter correct email or password")
             navigate("/login")
         }
     }
@@ -45,7 +45,7 @@ const Login = () => {
                         <div className='col'>
                             <div className="form-outline d-grid gap-1 ">
                                 <h1 className='text-center' style={{ padding: "30px" }} >Login into  your account</h1>
-                                <input type="user" placeholder="alex@email.com" id="form12" className="form-control" onChange={(e) => setEmail(e.target.value)} required />
+                                <input type="email" placeholder="alex@email.com" id="form12" className="form-control" onChange={(e) => setEmail(e.target.value)} required />
                             </div>
                             <br />
 

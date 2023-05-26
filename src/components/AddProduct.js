@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {useNavigate} from "react-router-dom"
 import { Button } from 'react-bootstrap'
 import Header from './Header'
-const AddPosduct = () => {
+const AddProduct = () => {
     const [name, setPname] = useState()
     const [prize, setPprize] = useState()
     const [model, setPmodel] = useState()
@@ -20,14 +20,14 @@ const AddPosduct = () => {
         }
 
         let result = await fetch("http://localhost:5000/products", {
-            method: "post",
+            method: "POST",
             headers: {
-                "Content-Type": "Application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ name, prize, model, company })
         })
-        let add = await result.json()
-        console.log(add)
+        result = await result.json()
+        console.log(result)
         alert("Product Added successfully")
         navigate("/")
     }
@@ -70,4 +70,4 @@ const AddPosduct = () => {
     )
 }
 
-export default AddPosduct
+export default AddProduct

@@ -12,16 +12,15 @@ const Signup = () => {
     const navigate = useNavigate()
 
     const success = async () => {
-
         let result = await fetch("http://localhost:5000/reg", {
-            method: "post",
+            method: "POST",
             headers: {
-                "Content-Type": "Application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ fname, lname, password, email })
         })
         let add = await result.json()
-        alert("Registretion successfull")
+        alert("Registration successful")
         localStorage.setItem("Registered Data", JSON.stringify(add))
         navigate("/")
     }

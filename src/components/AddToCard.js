@@ -27,9 +27,9 @@ const submit =()=>{
 
   const getProduct = useCallback(async () => {
     let result = await fetch(`http://localhost:5000/products/${params.id}`)
-    let r = await result.json()
-    setPname(r.name)
-    setPprize(r.prize)
+    result = await result.json()
+    setPname(result.name)
+    setPprize(result.prize)
   }, [params.id])
   
   useEffect(() => {
