@@ -13,7 +13,7 @@ const Signup = () => {
 
     const success = async () => {
         
-        let result = await fetch("https://brownstackpd.onrender.com", {
+        let result = await fetch("https://brownstackpd.onrender.com/reg", {
         // let result = await fetch("http://localhost:5000/reg", {
             method: "POST",
             headers: {
