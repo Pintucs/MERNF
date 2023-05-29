@@ -19,7 +19,7 @@ const AddProduct = () => {
             return false
         }
 
-        let result = await fetch("http://localhost:5000/products", {
+        let result = await fetch("https://brownstackpd.onrender.com/products", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

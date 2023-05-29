@@ -26,7 +26,7 @@ const UpdatePosduct = () => {
     // }, [])
 
     const getProduct = useCallback(async () => {
-        let result = await fetch(`http://localhost:5000/products/${params.id}`)
+        let result = await fetch(`https://brownstackpd.onrender.com/products/${params.id}`)
         let r = await result.json()
         setPname(r.name)
         setPcompany(r.company)
@@ -40,7 +40,7 @@ const UpdatePosduct = () => {
 
 
     const success = async () => {
-        let result = await fetch(`http://localhost:5000/products/${params.id}`, {
+        let result = await fetch(`https://brownstackpd.onrender.com/products/${params.id}`, {
             method: "Put",
             headers: {
                 "Content-Type": "Application/json"

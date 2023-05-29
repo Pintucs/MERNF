@@ -26,7 +26,7 @@ const submit =()=>{
 }
 
   const getProduct = useCallback(async () => {
-    let result = await fetch(`http://localhost:5000/products/${params.id}`)
+    let result = await fetch(`https://brownstackpd.onrender.com/products/${params.id}`)
     result = await result.json()
     setPname(result.name)
     setPprize(result.prize)

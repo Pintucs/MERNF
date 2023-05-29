@@ -12,7 +12,7 @@ const Card = () => {
 
 
   const getData = async () => {
-    const result = await fetch("http://localhost:5000/products");
+    const result = await fetch("https://brownstackpd.onrender.com/products");
     const show = await result.json()
     setProduct(show)
   }
@@ -24,7 +24,7 @@ const Card = () => {
   const searchHandle = async (e) => {
     let key = e.target.value
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`)
+      let result = await fetch(`https://brownstackpd.onrender.com/search/${key}`)
       result = await result.json()
       if (result) {
         setProduct(result)
@@ -35,7 +35,7 @@ const Card = () => {
     }
   }
   const deleteData = async (id) => {
-    let result = await fetch(`http://localhost:5000/products/${id}`, {
+    let result = await fetch(`https://brownstackpd.onrender.com/products/${id}`, {
       method: "delete"
     })
     const ids = await result.json()
