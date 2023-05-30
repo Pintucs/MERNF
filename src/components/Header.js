@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import AddToCardIcon from './AddToCardIcon';
+import CardIcon from "./AddToCardIcon"
 
 const Header = (props) => {
     const auth = localStorage.getItem("Registered Data")
@@ -21,9 +21,10 @@ const Header = (props) => {
                 </div>
                 <div className='collapse navbar-collapse' id="mydiv">
                     <ul className='navbar-nav ml-auto'>
-                        <li className='navbar-text'><Link to='/addproduct' className='nav-link'>Add_Product</Link></li>
+                        
                         {auth ? <>
-                            <li className='navbar-text'><Link to="/addtocard" className='nav-link'><AddToCardIcon /></Link></li>
+                            <li className='navbar-text'><Link to='/addproduct' className='nav-link'>Add_Product</Link></li>
+                            <li className='navbar-text'><Link to="/addtocard" className='nav-link'><CardIcon /></Link></li>
                             <li className='navbar-text'><Link to="/login" className='nav-link' onClick={logOut}>Logout</Link></li>
                         </>
                             : <>

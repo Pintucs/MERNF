@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
+import UpdateProduct from './UpdateProduct';
 const Card = () => {
   const [product, setProduct] = useState([])
   const [count, setCount] = useState(1)
@@ -11,7 +12,7 @@ const Card = () => {
 
 
 
-  const getData = async () => {
+    const getData =async () => {
     const result = await fetch("https://brownstackpd.onrender.com/products");
     const show = await result.json()
     setProduct(show)
@@ -19,7 +20,7 @@ const Card = () => {
 
   useEffect(() => {
     getData();
-  }, [])
+  }, [getData])
 
   const searchHandle = async (e) => {
     let key = e.target.value
@@ -47,7 +48,7 @@ const Card = () => {
   return (
     <>
       <div className="d-flex justify-content-end">
-
+   
         <div style={{ width: "30%" }}>
           <input type="text" onChange={searchHandle} placeholder="Find Product Here..." name="name" className="form-control m-2" />
         </div>
@@ -66,17 +67,15 @@ const Card = () => {
                 <div className="d-grid gap-2">
                   {/* <Link to={"/addtocard/" + v._id} > */}
                   <Link to={"/addtocard/" + v._id} >
-                    <Button className="btn btn-primary" onClick={() => {
+                    <Button className="btn btn-primary col-12" onClick={() => {
                       setCount(count + 1)
                       setId(v._id)
                     }}>Add To Card</Button>
                   </Link>
                   <Button onClick={() => deleteData(v._id)} className='btn btn-danger' >Delete</Button>
-                  <Link to={"/updateproduct/" + v._id} >
-                    <Button className="btn btn-primary">Update</Button>
-                  </Link>
-
-                </div>
+                  
+                  <Button className="btn btn-primary p-0"><UpdateProduct id={v._id}/></Button>
+                 </div>
               </div>
             </div>
           </div>

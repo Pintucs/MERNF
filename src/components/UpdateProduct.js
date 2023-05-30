@@ -1,46 +1,33 @@
 import React, { useEffect, useState,useCallback } from 'react'
-import { Button } from 'react-bootstrap'
-import Header from './Header'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { Button, Modal } from 'react-bootstrap';
 
-const UpdatePosduct = () => {
+const UpdateProduct = (props) => {
     const [name, setPname] = useState()
     const [prize, setPprize] = useState()
     const [model, setPmodel] = useState()
     const [company, setPcompany] = useState()
-    const params = useParams()
+    const [showModal, setShowModal] = useState(false);
+  
+    const params =props.id
+
     const navigate = useNavigate()
 
-
-    // const getProduct = async () => {
-    //     let result = await fetch(`http://localhost:5000/products/${params.id}`)
-    //     let r = await result.json()
-    //     setPname(r.name)
-    //     setPcompany(r.company)
-    //     setPmodel(r.model)
-    //     setPprize(r.prize)
-    // }
-
-    // useEffect(() => {
-    //     getProduct();
-    // }, [])
-
     const getProduct = useCallback(async () => {
-        let result = await fetch(`https://brownstackpd.onrender.com/products/${params.id}`)
+        let result = await fetch(`https://brownstackpd.onrender.com/products/${params}`)
         let r = await result.json()
         setPname(r.name)
         setPcompany(r.company)
         setPmodel(r.model)
         setPprize(r.prize)
-      }, [params.id, setPname, setPcompany, setPmodel, setPprize]);
+      }, [params, setPname, setPcompany, setPmodel, setPprize]);
       
       useEffect(() => {
         getProduct();
       }, [getProduct]);
 
-
     const success = async () => {
-        let result = await fetch(`https://brownstackpd.onrender.com/products/${params.id}`, {
+        let result = await fetch(`https://brownstackpd.onrender.com/products/${params}`, {
             method: "Put",
             headers: {
                 "Content-Type": "Application/json"
@@ -48,47 +35,53 @@ const UpdatePosduct = () => {
             body: JSON.stringify({ name, prize, model, company })
         })
         let add = await result.json()
-        alert("Product update successfully")
         localStorage.setItem("Product item", JSON.stringify(add))
         navigate("/")
+        setShowModal(false)
+    }
+
+    const back=()=>{
+        setShowModal(false)
     }
 
     return (
         <>
-            <Header />
-            <div className='container'>
-                <div className='row' >
-                    <div className='col'>
+        <div className="container">
+      <div className="row">
+        <div className="col">
 
-                        <div className="form-outline d-grid gap-1">
-                            <h1 className='text-center' style={{ padding: "30px" }}>Update Product Here</h1>
-                            <input type="text" placeholder="Product name" name="name" className="form-control" value={name} onChange={(e) => setPname(e.target.value)} />
+        <Button className="btn btn-primary col-12" onClick={() => setShowModal(true)}>Update Product</Button>
 
-                        </div>
-                        <br />
-                        <div className="form-outline">
-                            <input type="text" placeholder="Enter Prize" name="prize" className="form-control" value={prize} onChange={(e) => setPprize(e.target.value)} />
+          <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal.Body>
+              <div className="form-group">
+                <input type="text" placeholder="Product name" name="name" className="form-control" value={name} onChange={(e) => setPname(e.target.value)} />
+              </div>
+              <br />
+              <div className="form-group">
+                <input type="text" placeholder="Enter Prize" name="prize" className="form-control" value={prize} onChange={(e) => setPprize(e.target.value)} />
+              </div>
+              <br />
+              <div className="form-group">
+                <input type="text" placeholder="Model Name" name="model" className="form-control" value={model} onChange={(e) => setPmodel(e.target.value)} />
+              </div>
+              <br />
+              <div className="form-group">
+                <input type="text" placeholder="Company Name here" name="company" className="form-control" value={company} onChange={(e) => setPcompany(e.target.value)} />
+              </div>
+              <br />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={back}>Close</Button>
+              <Button variant="primary" onClick={success}>Update Product</Button>
+            </Modal.Footer>
+          </Modal>
 
-                        </div>
-                        <br />
-                        <div className="form-outline">
-                            <input type="text" placeholder="Model Name" name="model" className="form-control" value={model} onChange={(e) => setPmodel(e.target.value)} />
-
-                        </div><br />
-                        <div className="form-outline">
-                            <input type="text" placeholder="Company Name here" name="company" className="form-control" value={company} onChange={(e) => setPcompany(e.target.value)} />
-
-                        </div>
-                        <br />
-                        <div>
-                            <Button className='bg-dark col-12' onClick={success}>Click-to-Update-Product</Button><br />
-                            <br />
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+      </div>
+    </div>
         </>
     )
 }
 
-export default UpdatePosduct
+export default UpdateProduct

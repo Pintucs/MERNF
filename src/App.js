@@ -1,6 +1,5 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Contect from './components/Contect'
 import Card from './components/Card'
 import Header from './components/Header'
 import Login from './components/Login'
@@ -13,6 +12,7 @@ import AddProduct from './components/AddProduct'
 import AddToCardIcon from './components/AddToCardIcon'
 import AddToCard from './components/AddToCard'
 import UpdateProduct from './components/UpdateProduct'
+
 
 const App = () => {
 
@@ -32,11 +32,11 @@ const App = () => {
                     <Route path="/card" element={<Card />} />
                     <Route path="/carddetails" element={<CardDetails />} />
                     <Route path="/addproduct" element={<AddProduct />} />
-                    <Route path="/updateproduct/:id" element={<UpdateProduct />} />
-                    <Route path="/contect" element={<Contect />} />
+                    <Route path="/:id" element={<UpdateProduct />} />
                 </Route>
             </Routes>
         </>
     )
+    // 
 }
 export default App
