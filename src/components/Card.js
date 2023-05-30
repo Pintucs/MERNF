@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import UpdateProduct from './UpdateProduct';
@@ -12,11 +12,11 @@ const Card = () => {
 
 
 
-    const getData =async () => {
+    const getData = useCallback(async () => {
     const result = await fetch("https://brownstackpd.onrender.com/products");
     const show = await result.json()
     setProduct(show)
-  }
+  },[setProduct])
 
   useEffect(() => {
     getData();
