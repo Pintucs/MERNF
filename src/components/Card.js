@@ -67,7 +67,7 @@ const Card = () => {
       <div className="row">
         {product.length > 0 ? (
           product.map((v, index) => (
-            <div key={index} className="col-md-3 mb-4">
+            <div key={index} className="col-lg-3">
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{v.name}</h5>
