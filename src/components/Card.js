@@ -53,7 +53,7 @@ const Card = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-end">
+      <div className="d-flex justify-content-end m-3">
         <div className="col-md-4 mb-4">
           <input
             type="text"
@@ -64,11 +64,11 @@ const Card = () => {
           />
         </div>
       </div>
-      <div className="row">
+      <div className="row m-3" style={{backgroundColor:"brown"}}>
         {product.length > 0 ? (
           product.map((v, index) => (
-            <div key={index} className="col-lg-3">
-              <div className="card">
+            <div key={index} className="col-lg-3" style={{paddingBottom:"15px",paddingTop:"25px"}}>
+              <div className="card" >
                 <div className="card-body">
                   <h5 className="card-title">{v.name}</h5>
                   <p className="card-text">{v.model}</p>
