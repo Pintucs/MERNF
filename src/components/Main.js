@@ -10,11 +10,8 @@ const Main = () => {
         <>
             <Header />
             <h1 className='text-center'>Discover NEW Arrivals</h1>
-            <div className='container '>
-                <div className='col'><Card /></div>
+                <Card />
                 <Imageslide />
-            </div>
-
         </>
 
     )
