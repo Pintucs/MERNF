@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import Card from './Card'
-import Imageslide from './Imageslide'
+// import Imageslide from './Imageslide'
 
 const Main = () => {
     return (
@@ -18,7 +18,7 @@ const Main = () => {
   </div>
 </div> */}
             <Card />
-            <Imageslide />
+            {/* <Imageslide /> */}
         </>
     )
 }
