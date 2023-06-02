@@ -4,7 +4,6 @@ import CardIcon from './AddToCardIcon';
 
 const Header = ({count,ShowAllCard}) => {
   const auth = localStorage.getItem('Registered Data');
-console.log(count)
 
   const logOut = () => {
     localStorage.clear();
@@ -19,57 +18,52 @@ console.log(count)
   return (
   <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "brown" }}>
       <div className="container">
+      <Link className="navbar-brand" onClick={(()=>ShowAllCard(true))}>
       <img src="image/ab.png" alt="Logo" className="logo" style={iconStyle}/>
+      </Link>
         {auth ? (
-          <Link className="navbar-brand" to="/">
+          <div className="navbar-brand" >
             Brown-Stack ({JSON.parse(auth).fname})
-          </Link>
+          </div>
         ) : (
-          <Link className="navbar-brand" to="/">
+          <div className="navbar-brand">
             Brown-Stack My Shopping page
-          </Link>
+          </div>
         )}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#mydiv"
-          aria-controls="mydiv"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button className="navbar-toggler " type="button" data-toggle="collapse" data-target="#mydiv" 
+        aria-controls="mydiv" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="mydiv">
           <ul className="navbar-nav ml-auto">
             {auth ? (
               <>
-                <li className="nav-item">
-                  <Link to="/addproduct" className="nav-link">
+                <li>
+                  <Link to="/addproduct" className="nav-link" style={{ color: 'white' }}>
                     Add Product
                   </Link>
                 </li>
-                <li className="nav-item" onClick={(()=>ShowAllCard(false))}>
+                <li onClick={(()=>ShowAllCard(false))}>
                   <Link className="nav-link">
                     <CardIcon counter={count}/>
                   </Link>
                 </li>
                
-                <li className="nav-item">
-                  <Link to="/login" className="nav-link" onClick={logOut}>
+                <li>
+                  <Link to="/login" className="nav-link" onClick={logOut} style={{ color: 'white' }}>
                     Logout
                   </Link>
                 </li>
               </>
             ) : (
               <>
-                <li className="nav-item">
-                  <Link to="/login" className="nav-link">
+                <li>
+                  <Link to="/login" className="nav-link" style={{ color: 'white' }}>
                     Login
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/signup" className="nav-link">
+                <li>
+                  <Link to="/signup" className="nav-link" style={{ color: 'white' }}>
                     SignUp
                   </Link>
                 </li>
