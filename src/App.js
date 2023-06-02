@@ -28,11 +28,11 @@ const App = () => {
                 <Route element={<Private />}>
                     <Route path="/addtocardicon" element={<AddToCardIcon />} />
                     <Route path="/" element={<Main />} />
-                    <Route path="/addtocard/:id" element={<AddToCard />} />
+                    <Route path="/addtocard" element={<AddToCard />} />
                     <Route path="/card" element={<Card />} />
                     <Route path="/carddetails" element={<CardDetails />} />
                     <Route path="/addproduct" element={<AddProduct />} />
-                    <Route path="/:id" element={<UpdateProduct />} />
+                    <Route path="/updateProduct" element={<UpdateProduct />} />
                 </Route>
             </Routes>
         </>

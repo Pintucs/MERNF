@@ -1,15 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import UpdateProduct from './UpdateProduct';
 
-const Card = () => {
+const Card = ({handleCardData}) => {
   const [product, setProduct] = useState([]);
-  const [count, setCount] = useState(1);
-  const [id, setId] = useState(null);
-
-  localStorage.setItem(`${id}`, JSON.stringify({ id }));
-  localStorage.setItem(`count`, JSON.stringify({ count }));
 
   const getData = useCallback(async () => {
     const result = await fetch('https://brownstackpd.onrender.com/products');
@@ -75,17 +69,16 @@ const Card = () => {
                   <p className="card-text">{v.prize}</p>
                   <p className="card-text"> {v.company}</p>
                   <div className="d-grid gap-2">
-                    <Link to={'/addtocard/' + v._id}>
-                      <Button
-                        className="btn btn-primary col-12"
-                        onClick={() => {
-                          setCount(count + 1);
-                          setId(v._id);
-                        }}
-                      >
+                    {/* <Link to={'/addtocard/' + v._id}> */}
+
+                      {/* <Button className="btn btn-primary col-12" onClick={() => cardData(v)} >
                         Add To Cart
+                      </Button> */}
+                      <Button className="btn btn-primary col-12" onClick={() => handleCardData(v)}>
+                         Add To Cart
                       </Button>
-                    </Link>
+
+                    {/* </Link> */}
                     <Button onClick={() => deleteData(v._id)} className="btn btn-danger">
                       Delete
                     </Button>

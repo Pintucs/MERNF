@@ -1,7 +1,7 @@
 import React from 'react';
 
-const AddToCartIcon = () => {
-    const counterStyle = {
+const AddToCartIcon = ({counter}) => {
+  const counterStyle = {
         position: 'relative',
         top: '-10px',
         padding: '1px 7px',
@@ -16,7 +16,7 @@ const AddToCartIcon = () => {
     height: '30px',
     borderRadius:"50%"
   };
-  const a=5
+  const a=counter
   
   return (
     <>
