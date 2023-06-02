@@ -5,15 +5,15 @@ import AddToCard from './AddToCard'
 // import Imageslide from './Imageslide'
 
 const Main = () => {
-    const [A,setA]=useState([])
+    const [carditem,setcarditem]=useState([])
     const [Show,setShow]=useState(true)
     const cardData = (data) => {
-        setA([...A,{...data,quantity:1}])
-      };
-      console.log(A)
+        // const existingItem = carditem.find((item) => item.id === data.id);
+        setcarditem([...carditem,{...data,quantity:1}])
+      }
     return (
         <>
-            <Header count={A.length} ShowAllCard={setShow}/>
+            <Header count={carditem.length} ShowAllCard={setShow}/>
             {
             Show ? <> <h1 className='text-center'>Discover NEW Arrivals</h1>
                          <div className="row w-100">
@@ -23,7 +23,7 @@ const Main = () => {
                          </div>
                          </>
                          :
-                         <AddToCard CardData={A} />
+                         <AddToCard CardData={carditem} />
                 }
 
             {/* <Imageslide /> */}
