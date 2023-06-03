@@ -42,21 +42,21 @@ const AddProduct = () => {
                         <div className="form-outline d-grid gap-1">
                             <h1 className='text-center' style={{ padding: "30px" }}>Add Product Here</h1>
                             <input type="text" placeholder="Product name" name="name" className="form-control" onChange={(e) => setPname(e.target.value)} required />
-                            {error && !name && <span>Enter valid input</span>}
+                            {error && !name && <b style={{color:"red",fontSize:"12px"}}>Enter valid input</b>}
                         </div>
                         <br />
                         <div className="form-outline">
                             <input type="text" placeholder="Enter Prize" name="prize" className="form-control" onChange={(e) => setPprize(e.target.value)} required />
-                            {error && !prize && <span>Enter valid input</span>}
+                            {error && !prize && <b style={{color:"red",fontSize:"12px"}}>Enter valid input</b>}
                         </div>
                         <br />
                         <div className="form-outline">
                             <input type="text" placeholder="Model Name" name="model" className="form-control" onChange={(e) => setPmodel(e.target.value)} required />
-                            {error && !model && <span>Enter valid input</span>}
+                            {error && !model && <b style={{color:"red",fontSize:"12px"}}>Enter valid input</b>}
                         </div><br />
                         <div className="form-outline">
                             <input type="text" placeholder="Company Name here" name="company" className="form-control" onChange={(e) => setPcompany(e.target.value)} required />
-                            {error && !company && <span>Enter valid input</span>}
+                            {error && !company && <b style={{color:"red",fontSize:"12px"}}>Enter valid input</b>}
                         </div>
                         <br />
                         <div>

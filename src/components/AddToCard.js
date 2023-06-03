@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { Link ,useNavigate} from 'react-router-dom';
+import Header from './Header';
 
-const AddToCard = ({ CardData }) => {
+const AddToCard = () => {
   const [card, setCard] = useState([]);
-  // console.log("card lenght",card.reduce((sum, item) => sum + item.quantity, 0))
+  const navigate = useNavigate();  
 
+   const auth=localStorage.getItem("CardData")
   useEffect(() => {
-    setCard(CardData);
-  }, [CardData]);
+    if (auth) {
+      setCard(JSON.parse(auth));
+    }
+  }, [auth]);
+
 
   const handleIncreaseQuantity = (index) => {
     const updatedCard = card.map((item, ind) => {
@@ -28,13 +34,29 @@ const AddToCard = ({ CardData }) => {
     });
     setCard(updatedCard);
   };
-
+  const ProcessItem = () => {
+    if (card.length === 0) {
+      alert("Please add items to your cart");
+      navigate('/');
+    } else {
+      alert("Your cart has been processed. Products will be delivered after 80000000 years later.");
+      navigate('/');
+    }
+  };
   return (
     <>
-      <h1 className='float-center'>
+    <Header />
+      <div className='container d-flex justify-content-between h3 p-3 m-3' style={{width:"40%"}}>
+      <div>
         Total Amount:{' '}
         {card.reduce((total, item) => total + item.prize * item.quantity, 0)}
-      </h1>
+      </div>
+      <div>
+        <Link to="/">
+      <Button onClick={ProcessItem}>Process To Buy</Button>
+      </Link>
+      </div>
+      </div>
       {card.map((Carditem, index) => (
         <div
           className='container d-flex justify-content-between h3 p-3 m-3'
@@ -57,6 +79,7 @@ const AddToCard = ({ CardData }) => {
           </div>
         </div>
       ))}
+
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CardIcon from './AddToCardIcon';
 
-const Header = ({count,ShowAllCard}) => {
+const Header = ({count}) => {
   const auth = localStorage.getItem('Registered Data');
 
   const logOut = () => {
@@ -18,7 +18,7 @@ const Header = ({count,ShowAllCard}) => {
   return (
   <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "brown" }}>
       <div className="container">
-      <Link className="navbar-brand" onClick={(()=>ShowAllCard(true))}>
+      <Link className="navbar-brand" to="/">
       <img src="image/ab.png" alt="Logo" className="logo" style={iconStyle}/>
       </Link>
         {auth ? (
@@ -43,9 +43,9 @@ const Header = ({count,ShowAllCard}) => {
                     Add Product
                   </Link>
                 </li>
-                <li onClick={(()=>ShowAllCard(false))}>
-                  <Link className="nav-link">
-                    <CardIcon counter={count}/>
+                <li >
+                  <Link className="nav-link" to="/addtocard" >
+                    <CardIcon counter={count} />
                   </Link>
                 </li>
                

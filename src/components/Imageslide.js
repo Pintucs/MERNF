@@ -8,6 +8,7 @@ const Imageslide = () => {
             <Container>
                 <Row>
                     <Col>
+                    
                     <Carousel fade>
                         <Carousel.Item  >
                             <img src="image/a.jpg" alt="a" className='d-block w-100'/>
